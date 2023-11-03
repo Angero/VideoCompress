@@ -115,16 +115,16 @@ public class VideoCompressPlugin: NSObject, FlutterPlugin {
         
         let orientation = avController.getVideoOrientation(path)
         
+        let formattedDate = "xxx2";
+
         if let captureDate = getCaptureDate(for: asset) {
            let dateFormatter = DateFormatter()
            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-           let formattedDate = dateFormatter.string(from: captureDate)
+           formattedDate = dateFormatter.string(from: captureDate)
            print("Capture Date: \(formattedDate)")
         } else {
            print("Capture Date not found in the video asset.")
         }
-        
-        let formattedDate2 = "xxx1";
         
         let title = avController.getMetaDataByTag(metadataAsset,key: "title")
         let author = avController.getMetaDataByTag(metadataAsset,key: "author")
