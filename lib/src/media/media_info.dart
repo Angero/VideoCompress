@@ -16,6 +16,7 @@ class MediaInfo {
   double? duration;
   bool? isCancel;
   File? file;
+  String? creationDate;
 
   MediaInfo({
     required this.path,
@@ -28,6 +29,7 @@ class MediaInfo {
     this.duration,
     this.isCancel,
     this.file,
+    this.creationDate,
   });
 
   MediaInfo.fromJson(Map<String, dynamic> json) {
@@ -41,6 +43,7 @@ class MediaInfo {
     duration = double.tryParse('${json['duration']}');
     isCancel = json['isCancel'];
     file = File(path!);
+    creationDate = json['creationDate'];
   }
 
   Map<String, dynamic> toJson() {
