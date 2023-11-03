@@ -94,6 +94,17 @@ public class VideoCompressPlugin: NSObject, FlutterPlugin {
         }
     }
     
+    func getCaptureDate(for asset: AVAsset) -> Date? {
+        for metadataItem in asset.commonMetadata {
+            if metadataItem.commonKey == AVMetadataKey.commonKeyCreationDate {
+                if let date = metadataItem.value as? Date {
+                    return date
+                }
+            }
+        }
+        return nil
+    }
+    
     public func getMediaInfoJson(_ path: String)->[String : Any?] {
         let url = Utility.getPathUrl(path)
         let asset = avController.getVideoAsset(url)
@@ -103,6 +114,17 @@ public class VideoCompressPlugin: NSObject, FlutterPlugin {
         let metadataAsset = playerItem.asset
         
         let orientation = avController.getVideoOrientation(path)
+        
+//        if let captureDate = getCaptureDate(for: asset) {
+//            let dateFormatter = DateFormatter()
+//            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//            let formattedDate = dateFormatter.string(from: captureDate)
+//            print("Capture Date: \(formattedDate)")
+//        } else {
+//            print("Capture Date not found in the video asset.")
+//        }
+        
+        let formattedDate2 = "xxx";
         
         let title = avController.getMetaDataByTag(metadataAsset,key: "title")
         let author = avController.getMetaDataByTag(metadataAsset,key: "author")
@@ -117,6 +139,7 @@ public class VideoCompressPlugin: NSObject, FlutterPlugin {
         
         let dictionary = [
             "path":Utility.excludeFileProtocol(path),
+            "capture":formattedDate2,
             "title":title,
             "author":author,
             "width":width,
