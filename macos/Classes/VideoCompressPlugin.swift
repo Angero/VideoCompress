@@ -138,7 +138,7 @@ public class VideoCompressPlugin: NSObject, FlutterPlugin {
         
         let dictionary = [
             "path":Utility.excludeFileProtocol(path),
-            "capture":formattedDate2,
+            "capture":formattedDate,
             "title":title,
             "author":author,
             "width":width,
