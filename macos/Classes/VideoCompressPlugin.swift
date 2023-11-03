@@ -115,7 +115,7 @@ public class VideoCompressPlugin: NSObject, FlutterPlugin {
         
         let orientation = avController.getVideoOrientation(path)
         
-        let formattedDate = avController.getMetaDataByTag(metadataAsset,key: "creationdate")
+        let formattedDate = avController.getMetaDataByTag(metadataAsset,key: "creation_date")
 
 //         if let captureDate = getCaptureDate(for: asset) {
 //            let dateFormatter = DateFormatter()
