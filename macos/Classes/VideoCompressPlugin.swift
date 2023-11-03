@@ -115,7 +115,7 @@ public class VideoCompressPlugin: NSObject, FlutterPlugin {
         
         let orientation = avController.getVideoOrientation(path)
         
-        var formattedDate = "xxx2";
+        var formattedDate = "xxx3";
 
         if let captureDate = getCaptureDate(for: asset) {
            let dateFormatter = DateFormatter()
@@ -123,6 +123,7 @@ public class VideoCompressPlugin: NSObject, FlutterPlugin {
            formattedDate = dateFormatter.string(from: captureDate)
            print("Capture Date: \(formattedDate)")
         } else {
+           formattedDate = "xxx4";
            print("Capture Date not found in the video asset.")
         }
         
